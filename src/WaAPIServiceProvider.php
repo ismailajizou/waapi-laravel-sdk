@@ -16,7 +16,7 @@ class WaAPIServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-waapi')
-            ->hasRoute('api')
+          //  ->hasRoute('api')
             ->hasConfigFile('waapi');
     }
 }
