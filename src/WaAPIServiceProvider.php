@@ -1,6 +1,4 @@
-
 <?php
-
 namespace WaAPI\WaAPI;
 
 use Spatie\LaravelPackageTools\Package;
