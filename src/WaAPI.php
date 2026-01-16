@@ -18,7 +18,7 @@ class WaAPI
      *
      * @param  int|null  $instanceId The instance ID. If not provided, the default instance ID will be used.
      */
-    public function __construct(int $instanceId = null)
+    public function __construct(?int $instanceId = null)
     {
         // Create a new instance of the WaAPISdk class using the API token from the configuration.
         $this->sdk = new WaAPISdk(config('waapi.api_token'));
@@ -50,7 +50,7 @@ class WaAPI
      * @throws \WaAPI\WaAPISdk\Exceptions\NotFoundException If the instance is not found.
      * @throws \WaAPI\WaAPISdk\Exceptions\ValidationException If the payload is invalid.
      */
-    public function executeAction(string $action, array $payload, int $instanceId = null)
+    public function executeAction(string $action, array $payload, ?int $instanceId = null)
     {
         // Execute the action using the instance ID, or the default instance ID if null.
         return $this->sdk->executeInstanceAction($instanceId ?? $this->instanceId, $action, $payload);
@@ -115,7 +115,7 @@ class WaAPI
      * @throws \WaAPI\WaAPISdk\Exceptions\NotFoundException If the instance is not found.
      * @throws \WaAPI\WaAPISdk\Exceptions\ValidationException If the input validation fails.
      */
-    public function updateInstance(string $webhookUrl, array $webhookEvents, int $instanceId = null)
+    public function updateInstance(string $webhookUrl, array $webhookEvents, ?int $instanceId = null)
     {
         return $this->sdk->updateInstance($instanceId ?? $this->instanceId, $webhookUrl, $webhookEvents);
     }
@@ -131,7 +131,7 @@ class WaAPI
      * @throws \WaAPI\WaAPISdk\Exceptions\NotFoundException If the instance is not found.
      * @throws \WaAPI\WaAPISdk\Exceptions\ValidationException If the instance ID is invalid.
      */
-    public function deleteInstance(int $instanceId = null)
+    public function deleteInstance(?int $instanceId = null)
     {
         $this->sdk->deleteInstance($instanceId ?? $this->instanceId);
     }
@@ -147,7 +147,7 @@ class WaAPI
      * @throws \WaAPI\WaAPISdk\Exceptions\NotFoundException If the instance is not found.
      * @throws \WaAPI\WaAPISdk\Exceptions\ValidationException If there is a validation error.
      */
-    public function getInstanceStatus(int $instanceId = null)
+    public function getInstanceStatus(?int $instanceId = null)
     {
         return $this->sdk->getInstanceClientStatus($instanceId ?? $this->instanceId);
     }
@@ -163,7 +163,7 @@ class WaAPI
      * @throws \WaAPI\WaAPISdk\Exceptions\NotFoundException If the instance is not found.
      * @throws \WaAPI\WaAPISdk\Exceptions\ValidationException If there is a validation error.
      */
-    public function getInstanceQrCode(int $instanceId = null)
+    public function getInstanceQrCode(?int $instanceId = null)
     {
         return $this->sdk->getInstanceClientQrCode($instanceId ?? $this->instanceId);
     }
@@ -179,7 +179,7 @@ class WaAPI
      * @throws \WaAPI\WaAPISdk\Exceptions\NotFoundException If the instance is not found.
      * @throws \WaAPI\WaAPISdk\Exceptions\ValidationException If there is a validation error.
      */
-    public function getInstanceInfo(int $instanceId = null)
+    public function getInstanceInfo(?int $instanceId = null)
     {
         // Get the instance client information using the SDK.
         return $this->sdk->getInstanceClientInfo($instanceId ?? $this->instanceId);

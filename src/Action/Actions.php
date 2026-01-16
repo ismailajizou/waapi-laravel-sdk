@@ -65,7 +65,7 @@ trait Actions
      * @param  int|null  $instanceId (Optional) The ID of the instance.
      * @return \WaAPI\WaAPISdk\Resources\ExecutedAction The executed action.
      */
-    public function sendSeen(string $chatId, int $instanceId = null): ExecutedAction
+    public function sendSeen(string $chatId, ?int $instanceId = null): ExecutedAction
     {
         return $this->executeAction(
             'send-seen',
@@ -82,7 +82,7 @@ trait Actions
      * @param  int|null  $instanceId The ID of the instance (optional).
      * @return \WaAPI\WaAPISdk\Resources\ExecutedAction The executed action resource.
      */
-    public function sendVcard(string $chatId, Vcard $vCard, int $instanceId = null): ExecutedAction
+    public function sendVcard(string $chatId, Vcard $vCard, ?int $instanceId = null): ExecutedAction
     {
         // Execute the 'send-vcard' action with the provided parameters
         return $this->executeAction(
@@ -98,7 +98,7 @@ trait Actions
      * @param  int|null  $instanceId The instance ID (optional)
      * @return \WaAPI\WaAPISdk\Resources\ExecutedAction The executed action object
      */
-    public function getChats(int $instanceId = null): ExecutedAction
+    public function getChats(?int $instanceId = null): ExecutedAction
     {
         // Call the executeAction method to get the chats
         return $this->executeAction(
@@ -160,7 +160,7 @@ trait Actions
      * @param  int|null  $instanceId - Optional. The ID of the instance. Default is null.
      * @return \WaAPI\WaAPISdk\Resources\ExecutedAction - The executed action result.
      */
-    public function deleteMessageById(string $messageId, bool $forEveryone = null, int $instanceId = null): ExecutedAction
+    public function deleteMessageById(string $messageId, bool $forEveryone = null, ?int $instanceId = null): ExecutedAction
     {
         // Execute the action 'delete-message-by-id' and pass the message ID and 'forEveryone' parameter.
         return $this->executeAction(
@@ -176,7 +176,7 @@ trait Actions
      * @param  int|null  $instanceId The ID of the instance. Defaults to null.
      * @return \WaAPI\WaAPISdk\Resources\ExecutedAction The executed action result.
      */
-    public function getContacts(int $instanceId = null): ExecutedAction
+    public function getContacts(?int $instanceId = null): ExecutedAction
     {
         // Execute the 'get-contacts' action with an empty set of parameters and the provided instance ID
         return $this->executeAction(
@@ -193,7 +193,7 @@ trait Actions
      * @param  int|null  $instanceId (Optional) The instance ID.
      * @return \WaAPI\WaAPISdk\Resources\ExecutedAction The executed action object.
      */
-    public function isRegisteredUser(string $contactId, int $instanceId = null): ExecutedAction
+    public function isRegisteredUser(string $contactId, ?int $instanceId = null): ExecutedAction
     {
         return $this->executeAction(
             'is-registered-user',
@@ -245,7 +245,7 @@ trait Actions
      * @param  int|null  $instanceId (optional) The instance ID.
      * @return \WaAPI\WaAPISdk\Resources\ExecutedAction The result of the action.
      */
-    public function blockContactById(string $contactId, int $instanceId = null): ExecutedAction
+    public function blockContactById(string $contactId, ?int $instanceId = null): ExecutedAction
     {
         // Execute the 'block-contact' action with the provided contact ID and instance ID.
         return $this->executeAction(
@@ -261,7 +261,7 @@ trait Actions
      * @param  string  $contactId The ID of the contact to unblock
      * @param  int|null  $instanceId The ID of the instance (optional)
      */
-    public function unblockContactById(string $contactId, int $instanceId = null): ExecutedAction
+    public function unblockContactById(string $contactId, ?int $instanceId = null): ExecutedAction
     {
         return $this->executeAction(
             'unblock-contact',
@@ -277,7 +277,7 @@ trait Actions
      * @param  int|null  $instanceId The ID of the instance (optional).
      * @return \WaAPI\WaAPISdk\Resources\ExecutedAction The executed action.
      */
-    public function getChatById(string $chatId, int $instanceId = null): ExecutedAction
+    public function getChatById(string $chatId, ?int $instanceId = null): ExecutedAction
     {
         return $this->executeAction(
             'get-chat-by-id',
@@ -294,7 +294,7 @@ trait Actions
      * @param  int|null  $instanceId The ID of the instance (optional).
      * @return \WaAPI\WaAPISdk\Resources\ExecutedAction The executed action.
      */
-    public function createGroup(string $name, array $participants, int $instanceId = null): ExecutedAction
+    public function createGroup(string $name, array $participants, ?int $instanceId = null): ExecutedAction
     {
         return $this->executeAction(
             'create-group',
@@ -306,7 +306,7 @@ trait Actions
     /**
      * Retrieves the participants of a group.
      */
-    public function getGroupParticipants(string $chatId, int $instanceId = null): ExecutedAction
+    public function getGroupParticipants(string $chatId, ?int $instanceId = null): ExecutedAction
     {
         return $this->executeAction(
             'get-group-participants',
@@ -318,7 +318,7 @@ trait Actions
     /**
      * Get group information by chat ID and instance ID.
      */
-    public function getGroupInfo(string $chatId, int $instanceId = null): ExecutedAction
+    public function getGroupInfo(string $chatId, ?int $instanceId = null): ExecutedAction
     {
         return $this->executeAction(
             'get-group-info',
@@ -349,7 +349,7 @@ trait Actions
      *
      * @return \WaAPI\WaAPISdk\Resources\ExecutedAction
      */
-    public function addGroupParticipant(string $chatId, string $participant, int $instanceId = null)
+    public function addGroupParticipant(string $chatId, string $participant, ?int $instanceId = null)
     {
         return $this->executeAction(
             'add-group-participant',
@@ -366,7 +366,7 @@ trait Actions
      * @param  int|null  $instanceId The ID of the instance.
      * @return \WaAPI\WaAPISdk\Resources\ExecutedAction The executed action.
      */
-    public function removeGroupParticipant(string $chatId, string $participant, int $instanceId = null): ExecutedAction
+    public function removeGroupParticipant(string $chatId, string $participant, ?int $instanceId = null): ExecutedAction
     {
         return $this->executeAction(
             'remove-group-participant',
@@ -401,7 +401,7 @@ trait Actions
     /**
      * Demote a group participant from admin
      */
-    public function demoteGroupParticipant(string $chatId, string $participant, int $instanceId = null): ExecutedAction
+    public function demoteGroupParticipant(string $chatId, string $participant, ?int $instanceId = null): ExecutedAction
     {
         return $this->executeAction(
             'demote-group-participant',
@@ -416,7 +416,7 @@ trait Actions
      * @param  int|null  $instanceId The ID of the instance. If null, the default instance will be used.
      * @return ExecutedAction The executed action.
      */
-    public function logout(int $instanceId = null): ExecutedAction
+    public function logout(?int $instanceId = null): ExecutedAction
     {
         return $this->executeAction(
             'logout',
@@ -428,7 +428,7 @@ trait Actions
     /**
      * Reboot an instance
      */
-    public function reboot(int $instanceId = null): ExecutedAction
+    public function reboot(?int $instanceId = null): ExecutedAction
     {
         return $this->executeAction(
             'reboot',
